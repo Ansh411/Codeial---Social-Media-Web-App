@@ -27,7 +27,7 @@ passport.use(new LocalStrategy({
 
 // Serializing the user to decide which key is to be kept in the cookies
 passport.serializeUser(function(user,done){
-    done(null , user.id);
+    return done(null , user.id);
 });
 
 // Deserializing the user from the key in the cookies
@@ -56,8 +56,9 @@ passport.checkAuthentication = function(req, res , next){
 passport.setAuthenticatedUser = function(req, res , next){
     if(req.isAuthenticated()){
         // req.user contains the current signed user from the session cookie and we are just sending this to the locals for the views
-        req.locals.user = req.user;
+        res.locals.user = req.user;
     }
+    next();
 }
 
 module.exports = passport;

@@ -2,13 +2,16 @@ const User = require('../models/user');
 
 module.exports.profile = function(req,res){
     return res.render('user_profile', {
-        title : "User Profile"
+        title : "User Profile",
     })
 }
 
 // renders the sign up page
 
 module.exports.signUp = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user_sign_up', {
         title : "Codeial | Sign up"
     })
@@ -17,6 +20,9 @@ module.exports.signUp = function(req,res){
 // renders the sign in page
 
 module.exports.signIn = function(req,res){
+    if(req.isAuthenticated()){
+        return res.redirect('/users/profile');
+    }
     return res.render('user_sign_in', {
         title : "Codeial | Sign in"
     })
