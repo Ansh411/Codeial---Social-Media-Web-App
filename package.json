@@ -4,7 +4,9 @@
   "description": "My social media web application",
   "main": "index.js",
   "scripts": {
+    "dev" : "concurrently \"npm run sass\" \"nodemon index.js\"",
     "start": "nodemon index,js",
+    "sass": "npx sass assets/scss:assets/css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -23,6 +25,11 @@
     "express-session": "^1.18.2",
     "mongoose": "^6.9.2",
     "passport": "^0.7.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "sass": "^1.93.2",
+    "sass-middleware": "^0.0.3"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
   }
 }
