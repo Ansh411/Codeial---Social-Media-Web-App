@@ -1,0 +1,17 @@
+#home-container{
+    display: flex;
+    // align-items: stretch;
+    min-height: 100vh;
+
+    #feed-posts{
+        width: 70%;
+        padding: 10px;
+    }
+
+    #users-friends{
+        width: 30%;
+        padding: 10px;
+        border-left: 1px solid lightgrey;
+        // height: 100%;
+    }
+}
