@@ -1,4 +1,5 @@
 const Post = require('../models/posts');
+const Comment = require('../models/comment');
 
 module.exports.create = function(req, res){
     Post.create({
@@ -11,4 +12,20 @@ module.exports.create = function(req, res){
         }
         return res.redirect('/');
     });
+}
+
+module.exports.destroy = function(req , res){
+    Post.findById(req.params.id, function(err, post){
+        // .id means converting the object id into string
+        if(post.user == req.user.id){
+            post.remove();
+
+            Comment.deleteMany({post : req.params.id}, function(err){
+                return res.redirect('/');
+            })
+        }
+        else{
+            return res.redirect('/');
+        }
+    })
 }
