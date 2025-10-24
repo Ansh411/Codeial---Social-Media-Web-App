@@ -1,6 +1,7 @@
 // module.exports.actionName = function(req,res){}
 
 const Post = require('../models/posts');
+const User = require('../models/user');
 
 module.exports.home = function(req,res){
     // console.log(req.cookies);
@@ -23,9 +24,12 @@ module.exports.home = function(req,res){
         }
     })
     .exec(function(err,posts){
+        User.find({}, function(err, users){
         return res.render('Home', {
         title : "Codeial | Home",
-        posts : posts
+        posts : posts,
+        all_users : users
     });
-    })
+ });
+});
 };
