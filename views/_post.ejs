@@ -2,7 +2,7 @@
                         <p>
                             <% if(locals.user && locals.user.id == post.user.id) { %> 
                             <small>
-                                <a href="/posts/destroy/<%= post.id %>">Delete_X</a>
+                                <a href="/posts/destroy/<%= post.id %>">❌</a>
                             </small>
                             <% } %>
                             <%= post.content %>
