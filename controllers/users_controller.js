@@ -1,4 +1,3 @@
-const e = require('connect-flash');
 const User = require('../models/user');
 
 module.exports.profile = function(req,res){
@@ -13,10 +12,12 @@ module.exports.profile = function(req,res){
 module.exports.update = function(req,res){
     if(req.user.id == req.params.id){
         User.findByIdAndUpdate(req.params.id , req.body , function(err , user){
+            req.flash('success', 'Updated!');
             return res.redirect('/');
         });
     }
     else{
+        req.flash('error', 'Unauthorized!');
         return res.status(401).send('Unauthorized');
     }
 }
@@ -46,25 +47,27 @@ module.exports.signIn = function(req,res){
 // get the sign up data
 module.exports.create = function(req,res){
     if(req.body.password != req.body.confirm_password){
+        req.flash('error', 'Passwords do not match');
         return res.redirect('back');
     }
 
     User.findOne({email : req.body.email}, function(err,user){
         if(err){
-            console.log("error in finding user in signing up");
+           req.flash('error', err);
             return;
         }
 
         if(!user){
             User.create(req.body , function(err,user){
                 if(err){
-                    console.log("error in creating user while signing up");
+                    req.flash('error', err);
                     return;
                 }
                 return res.redirect('/users/sign-in');
             });
         }
         else{
+            req.flash('success', 'You have signed up, login to continue!');
             return res.redirect('back');
         }
     })
