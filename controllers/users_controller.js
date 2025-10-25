@@ -1,3 +1,4 @@
+const e = require('connect-flash');
 const User = require('../models/user');
 
 module.exports.profile = function(req,res){
@@ -72,6 +73,7 @@ module.exports.create = function(req,res){
 // Sign in and create a session for the user
 
 module.exports.createSession = function(req,res){
+    req.flash('success', 'Logged in Successfully !');
     return res.redirect('/');
 }
 
@@ -82,6 +84,7 @@ req.logout(function(err) {
   if (err) { 
     return next(err); 
 }
+  req.flash('success', 'You have been logged out !');
   res.redirect('/');
 });
 }

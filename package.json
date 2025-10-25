@@ -4,7 +4,7 @@
   "description": "My social media web application",
   "main": "index.js",
   "scripts": {
-    "dev" : "concurrently \"npm run sass\" \"nodemon index.js\"",
+    "dev": "concurrently \"npm run sass\" \"nodemon index.js\"",
     "start": "nodemon index,js",
     "sass": "npx sass assets/scss:assets/css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -17,6 +17,7 @@
   "author": "Ansh Gupta",
   "license": "ISC",
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "connect-mongo": "^3.2.0",
     "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
