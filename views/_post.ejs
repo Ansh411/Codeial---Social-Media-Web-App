@@ -22,7 +22,7 @@
                             <% } %>
                             
                             <div class="post-comments-list">
-                                <ul class="post-comments-<%= post._id %>">
+                                <ul id="post-comments-<%= post._id %>">
                                     <% for(comment of post.comments) { %> 
 
                                         <%- include('_comment') -%>

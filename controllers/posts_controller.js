@@ -49,7 +49,7 @@ module.exports.destroy = async function(req , res){
                 });
             }
 
-            req.flash('success', 'Post & ass ociated comments Deleted!');
+            req.flash('success', 'Post & associated comments Deleted!');
 
             return res.redirect('/');
         }
