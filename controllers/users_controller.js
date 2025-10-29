@@ -24,9 +24,8 @@ module.exports.update = async function(req,res){
 
         User.uploadedAvatar(req, res, function(err){
             if(err){
-                console.log('****Multer: ',err);
+                console.log('****Multer Error: ',err);
             }
-                
                 user.name = req.body.name;
                 user.email = req.body.email;
 
@@ -35,10 +34,12 @@ module.exports.update = async function(req,res){
                     user.avatar = User.avatarPath + '/' + req.file.filename;
                 }
                 user.save();
-                return res.redirect('/');
+                req.flash('success', 'Profile updated successfully!');
+                return res.redirect(`/users/profile/${req.user.id}`);
         });
 
     }catch(err){
+        console.log('Error:', err);
         req.flash('error',err);
         return res.redirect('/');
     }
@@ -115,6 +116,6 @@ req.logout(function(err) {
     return next(err); 
 }
   req.flash('success', 'You have been logged out !');
-  res.redirect('/');
+  return res.redirect('/');
 });
 }
