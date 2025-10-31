@@ -5,6 +5,11 @@ const router = express.Router();
 const userController = require('../controllers/users_controller');
 const passport = require('passport');
 
+// To display profile section in the footer profile link
+router.get('/profile', passport.checkAuthentication, function(req, res){
+    return res.redirect(`/users/profile/${req.user.id}`);
+});
+
 router.get('/profile/:id' ,passport.checkAuthentication, userController.profile);
 router.post('/update/:id' ,passport.checkAuthentication, userController.update);
 

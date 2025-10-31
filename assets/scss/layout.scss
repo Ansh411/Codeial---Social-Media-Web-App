@@ -1,9 +1,61 @@
-body{
-    margin : 0;
-    // text-align: center;
+// body{
+//     margin : 0;
+//     // text-align: center;
 
-    #layout-main{
-    height: 100%;
-    }
+//     #layout-main{
+//     height: 100%;
+//     }
+// }
+
+@import './variables';
+
+
+$primary: #0078ff;
+$accent: #ff006e;
+$bg: #f9f9fb;
+$text-dark: #222;
+$radius: 12px;
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #ffffff, $bg);
+  color: $text-dark;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main#layout-main {
+  flex: 1;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+a {
+  text-decoration: none;
+  color: $primary;
+  transition: color 0.2s ease;
+  &:hover {
+    color: $accent;
+  }
+}
+
+input[type="submit"], button {
+  background: $primary;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  &:hover {
+    background: darken($primary, 10%);
+  }
 }
 

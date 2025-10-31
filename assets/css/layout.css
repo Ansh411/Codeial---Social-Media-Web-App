@@ -1,8 +1,49 @@
 body {
   margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: linear-gradient(135deg, #ffffff, #f9f9fb);
+  color: #222;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
-body #layout-main {
-  height: 100%;
+
+main#layout-main {
+  flex: 1;
+  padding: 2rem;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+a {
+  text-decoration: none;
+  color: #0078ff;
+  transition: color 0.2s ease;
+}
+a:hover {
+  color: #ff006e;
+}
+
+input[type=submit], button {
+  background: #0078ff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+input[type=submit]:hover, button:hover {
+  background: #0060cc;
 }
 
 /*# sourceMappingURL=layout.css.map */
