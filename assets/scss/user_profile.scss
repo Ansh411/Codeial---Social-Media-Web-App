@@ -4,9 +4,11 @@
 
 @import './variables';
 
-body {
-  background: linear-gradient(120deg, #e0f3ff, #ffffff);
-}
+  body{
+    background: linear-gradient(120deg, #e0f3ff, #ffffff);
+  }
+
+#user-profile-container {
 
 img {
   border-radius: 50%;
@@ -56,5 +58,6 @@ form {
 p {
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: $text-light;
+  color: $text-dark;
+}
 }

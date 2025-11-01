@@ -2,7 +2,7 @@ body {
   background: linear-gradient(120deg, #e0f3ff, #ffffff);
 }
 
-img {
+#user-profile-container img {
   border-radius: 50%;
   width: 120px;
   height: 120px;
@@ -11,27 +11,26 @@ img {
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
-img:hover {
+#user-profile-container img:hover {
   transform: scale(1.05);
 }
-
-form {
+#user-profile-container form {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   max-width: 300px;
 }
-form input[type=text], form input[type=email], form input[type=file] {
+#user-profile-container form input[type=text], #user-profile-container form input[type=email], #user-profile-container form input[type=file] {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 0.6rem;
   transition: border 0.3s ease;
 }
-form input[type=text]:focus, form input[type=email]:focus, form input[type=file]:focus {
+#user-profile-container form input[type=text]:focus, #user-profile-container form input[type=email]:focus, #user-profile-container form input[type=file]:focus {
   border-color: #3f51b5;
   outline: none;
 }
-form input[type=submit] {
+#user-profile-container form input[type=submit] {
   background: #3f51b5;
   color: white;
   font-weight: 600;
@@ -41,14 +40,13 @@ form input[type=submit] {
   padding: 0.7rem;
   transition: all 0.3s;
 }
-form input[type=submit]:hover {
+#user-profile-container form input[type=submit]:hover {
   background: rgb(49.8319672131, 64.0696721311, 143.1680327869);
 }
-
-p {
+#user-profile-container p {
   font-size: 1rem;
   margin-top: 0.5rem;
-  color: #fff;
+  color: #333;
 }
 
 /*# sourceMappingURL=user_profile.css.map */
