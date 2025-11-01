@@ -1,88 +1,89 @@
-# 🌐 Codeial – Social Media Web Application
+# 💬 Codeial – Social Media Web Application
 
-A full-stack social media web application built with **Node.js**, **Express**, **MongoDB**, and **EJS**.
-This project helped me learn backend development from scratch — from manual authentication to advanced features like email services, job queues, and social login.
+A full-stack **social networking web app** built using modern web technologies like **Node.js**, **Express**, and **MongoDB**.
+This project represents my journey through backend development — from setting up authentication manually to implementing advanced tools like **Passport.js**, **JWT**, **Google OAuth**, and **Kue** for background jobs.
 
 ---
 
-## 🚀 Features Implemented
+## 🧰 Tech Stack & Libraries Used
+
+| Category               | Technologies / Libraries                       |
+| ---------------------- | ---------------------------------------------- |
+| **Backend**            | 🟩 Node.js • ⚙️ Express.js                     |
+| **Database**           | 🗄️ MongoDB • 🧩 Mongoose                      |
+| **Authentication**     | 🔐 Passport.js (Local & Google OAuth) • 🔑 JWT |
+| **Utilities**          | 🍪 Cookie-Parser • 🔒 Crypto • 🧂 Bcrypt       |
+| **Styling & Frontend** | 🎨 EJS • 💅 SCSS/SASS • ⚡ Noty.js • ⚙️ AJAX    |
+| **Email & Jobs**       | 📬 Nodemailer • 🧵 Kue • 🧱 Redis              |
+| **File Uploads**       | 🗂️ Multer                                     |
+| **Architecture**       | 🧠 MVC Pattern                                 |
+
+---
+
+## ✨ Key Features
 
 ✅ **User Authentication & Authorization**
 
-* Manual login/signup system using sessions
-* Authentication with **Passport.js** (Local Strategy)
-* **Google OAuth 2.0** login integration
+* Manual sign up / login using sessions
+* Authentication via **Passport.js** (Local + Google OAuth)
+* Token-based APIs using **JWT**
 
 ✅ **Profile Management**
 
-* Update profile details and upload avatars with **Multer**
-* Flash messages via **Noty.js** for better UX
+* Update profile details and upload avatar with **Multer**
+* Flash messages using **Noty.js**
 
 ✅ **Post & Comment System**
 
 * Users can create, delete, and comment on posts
-* Asynchronous updates using **AJAX**, **Promises**, and **async/await**
+* Asynchronous operations using **AJAX**, **Promises**, and **async/await**
 
-✅ **Email & Password Recovery**
+✅ **Email Service & Password Reset**
 
-* Password reset via email using **Nodemailer**
-* Secure reset links and password update flow
+* Forgot Password feature using **Nodemailer**
+* Secure password reset and update mechanism using **Crypto** and **Bcrypt**
 
-✅ **Background Jobs & Notifications**
+✅ **Background Jobs**
 
-* **Kue** + **Redis** for handling parallel jobs (like sending emails)
+* Used **Kue** and **Redis** to manage email jobs in background threads
 
-✅ **Security**
+✅ **API Integration**
 
-* **JWT (JSON Web Token)** based API authentication
+* Created REST APIs for posts, comments, and user authentication with **JWT**
 
 ✅ **Styling**
 
-* Responsive UI using **SCSS/SASS** for modular CSS
+* Beautiful UI built with modular **SASS/SCSS**
 
 ---
 
 ## 🧠 What I Learned
 
-* Node.js and Express fundamentals
-* MongoDB integration using **Mongoose**
-* Authentication (manual + Passport.js + JWT + Google OAuth)
-* Working with **APIs**, **AJAX**, **Promises**, and **async/await**
-* File upload using **Multer**
-* Flash messages with **Noty.js**
-* Email service using **Nodemailer**
-* Job queues using **Kue** and **Redis**
-* SCSS compilation and organization
-* MVC architecture and modular code structure
+* Node.js + Express.js fundamentals
+* Working with MongoDB using **Mongoose ODM**
+* Authentication (Manual + Passport.js + JWT + Google OAuth 2.0)
+* File upload with **Multer**
+* Sending mails with **Nodemailer**
+* Implementing background jobs using **Kue** & **Redis**
+* Flash messages and alerts with **Noty.js**
+* Securing data using **Crypto** and **Bcrypt**
+* Building dynamic frontends with **AJAX**, **Promises**, and **async/await**
+* Organizing and compiling **SASS/SCSS** files
+* Following the **MVC architectural pattern**
 
 ---
 
-## 🛠️ Tech Stack & Tools
-
-| Category          | Technology                              |
-| ----------------- | --------------------------------------- |
-| 🟩 Backend        | Node.js, Express.js                     |
-| 🗄️ Database      | MongoDB, Mongoose                       |
-| 🔐 Authentication | Passport.js (Local + Google OAuth), JWT |
-| 💅 Frontend       | EJS, SCSS, Noty.js, AJAX                |
-| 📨 Mail Service   | Nodemailer                              |
-| ⚙️ Job Queue      | Kue, Redis                              |
-| 💾 File Upload    | Multer                                  |
-| 🧰 Other Tools    | WSL (Redis setup), VS Code              |
-
----
-
-## 🧩 Project Structure
+## 📂 Folder Structure
 
 ```
 codeial/
 │
 ├── assets/             # SCSS, JS, images
 ├── config/             # Passport, Mongoose, Kue, etc.
-├── controllers/        # Business logic
-├── mailers/            # Nodemailer email templates
+├── controllers/        # App logic
+├── mailers/            # Nodemailer templates
 ├── models/             # Mongoose schemas
-├── routes/             # Express route files
+├── routes/             # Express routes
 ├── views/              # EJS templates
 ├── index.js            # Main server file
 └── package.json
@@ -99,15 +100,15 @@ git clone https://github.com/<your-username>/codeial.git
 cd codeial
 ```
 
-### 2️⃣ Install dependencies
+### 2️⃣ Install all dependencies
 
 ```bash
 npm install
 ```
 
-### 3️⃣ Set up environment variables
+### 3️⃣ Setup environment variables
 
-Create a `.env` file in the root directory and add:
+Create a `.env` file in the root folder and add the following:
 
 ```bash
 MONGODB_URI=your_mongodb_url
@@ -119,63 +120,82 @@ JWT_SECRET=your_jwt_secret
 REDIS_URL=redis://127.0.0.1:6379
 ```
 
-### 4️⃣ Run Redis (for Kue jobs)
+### 4️⃣ Start Redis (for Kue jobs)
 
-If using WSL:
+If using WSL or Linux:
 
 ```bash
 redis-server
 ```
 
-### 5️⃣ Run the server
+### 5️⃣ Run the application
 
 ```bash
 npm start
 ```
 
-Server runs on: **[http://localhost:8000](http://localhost:8000)**
+The app will run at 👉 **[http://localhost:8000](http://localhost:8000)**
 
 ---
 
-## 📬 Sending Emails
+## 📨 Email Configuration
 
-The app uses **Nodemailer** for sending password reset and notification emails.
-Make sure to configure a valid email service (like Gmail) inside `/config/nodemailer.js`.
-
----
-
-## 🧪 Testing the App
-
-* Create a new user or sign in using Google
-* Create posts and comments
-* Try deleting asynchronously (AJAX update)
-* Use “Forgot Password” to receive reset mail
-* Check email inbox for the reset link
-* Reset your password securely
+This project uses **Nodemailer** to send password reset and other notification emails.
+Configure your email credentials in `/config/nodemailer.js` for sending real emails.
 
 ---
 
-## 📸 Screenshots (Optional)
+## 🔒 Authentication Flow
 
-*Add screenshots or a demo GIF here if you’d like.*
+1. Users can sign up or log in manually
+2. Authentication handled with **Passport.js**
+3. Social login with **Google OAuth 2.0**
+4. JWT-based authentication for APIs
+5. Forgot password → Generates token via **Crypto** → Sends mail via **Nodemailer**
+6. User clicks link → Updates password securely (hashed with **Bcrypt**)
 
 ---
 
-## ❤️ Acknowledgements
+## ⚡ Running Background Jobs
 
-This project was inspired by the **Codeial** project from the Node.js Bootcamp by [Coding Ninjas].
-Built step-by-step while learning full-stack development.
+Used **Kue** with **Redis** to handle asynchronous jobs (like sending mails).
+Each job runs in a background worker thread to improve performance.
+
+---
+
+## 💾 Scripts in package.json
+
+```json
+"scripts": {
+  "start": "node index.js",
+  "dev": "nodemon index.js"
+}
+```
+
+---
+
+## 🧪 Testing the Application
+
+* Create a user manually or log in using Google
+* Create, delete, and comment on posts
+* Check live flash messages using **Noty.js**
+* Click “Forgot Password” to receive an email
+* Reset password via secure tokenized link
+* Try asynchronous post deletion via **AJAX**
 
 ---
 
 ## 🧑‍💻 Author
 
 **Ansh Gupta**
-📫 [LinkedIn](https://www.linkedin.com/in/ansh-gupta-b734a7230/) • [GitHub](https://github.com/Ansh411)
-“Still learning, building, and exploring more!”
+📍 India
+🔗 [LinkedIn](https://www.linkedin.com/in/ansh-gupta) • [GitHub](https://github.com/<your-username>)
+
+> 💡 *“Still learning, building, and exploring full-stack technologies every day.”*
 
 ---
 
-## ⭐ If you liked this project
+## 🌟 Project Status
 
-Don’t forget to **star** the repository and share it with your friends!
+🚧 **This is not the complete project — I’m still building it and adding more crazy features soon!**
+Stay tuned for updates like real-time chat, notifications, and more! 🚀
