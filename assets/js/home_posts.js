@@ -17,9 +17,11 @@
                     $('#posts-list-container>ul').prepend(newPost);
                     deletePost($(' .delete-post-button', newPost));
 
-                    setTimeout(() => {
-                        new PostComments(data.data.post._id);
-                    }, 0);
+                    
+                    new PostComments(data.data.post._id);
+                    
+
+                    new ToggleLike($(' .toggle-like-button', newPost));
 
                         new Noty({
                         theme: 'relax',
@@ -53,6 +55,14 @@
                             <br>
                             <small>
                                 ${post.user.name}
+                            </small>
+                            <br>
+                            <small>
+
+                                <a href="/likes/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes= "0">
+                                        <%= post.likes.length %> Likes
+                                </a>
+
                             </small>
                         </p>
                         <div class="post-comments">
