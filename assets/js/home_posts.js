@@ -46,7 +46,6 @@
     let newPostDom = function(post){
         return $(` <li id="post-${post._id}">
                         <p>
-                            
                             <small>
                                 <a class="delete-post-button" href="/posts/destroy/${post._id}">❌</a>
                             </small>
@@ -60,7 +59,7 @@
                             <small>
 
                                 <a href="/likes/toggle/?id=${post._id}&type=Post" class="toggle-like-button" data-likes= "0">
-                                        <%= post.likes.length %> Likes
+                                        ${post.likes.length} Likes
                                 </a>
 
                             </small>
@@ -115,9 +114,9 @@
     // and call the delete post method on delete link of each, also add AJAX (using the class we've created) to the delete button of each
 
     let convertPostsToAjax = function(){
-        $('#posts-list-container>ul').each(function(){
+        $('#posts-list-container>ul>li').each(function(){
             let self = $(this);
-            let deleteButton = $(' .delete-post-button', self);
+            let deleteButton = $('.delete-post-button', self);
             deletePost(deleteButton);
 
             // get the post's id by splitting the id attribute

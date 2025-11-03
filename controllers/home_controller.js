@@ -23,12 +23,16 @@ module.exports.home = async function(req,res){
     .populate({
         path: 'comments',
         populate: {
-            path: 'user'
-        },
+            path: 'user',
+            select: 'name email'
+        }
+    }).populate({
+        path: 'comments',
         populate: {
             path: 'likes'
         }
-    }).populate('comments').populate('likes');
+    })
+    .populate('likes');
 
     let users = await User.find({});
 
@@ -39,8 +43,7 @@ module.exports.home = async function(req,res){
     });
     }
     catch(err){
-        console.log('Error' , err);
+        console.log('Error in home controller' , err);
         return;
     }
-
-}
+};
