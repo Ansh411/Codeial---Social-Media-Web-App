@@ -1,7 +1,15 @@
 body {
   background: linear-gradient(120deg, #e0f3ff, #ffffff);
+  font-family: "Poppins", sans-serif;
 }
 
+#user-profile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
 #user-profile-container img {
   border-radius: 50%;
   width: 120px;
@@ -18,15 +26,19 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  max-width: 300px;
+  max-width: 320px;
 }
-#user-profile-container form input[type=text], #user-profile-container form input[type=email], #user-profile-container form input[type=file] {
+#user-profile-container form input[type=text],
+#user-profile-container form input[type=email],
+#user-profile-container form input[type=file] {
   border: 1px solid #ccc;
   border-radius: 10px;
   padding: 0.6rem;
   transition: border 0.3s ease;
 }
-#user-profile-container form input[type=text]:focus, #user-profile-container form input[type=email]:focus, #user-profile-container form input[type=file]:focus {
+#user-profile-container form input[type=text]:focus,
+#user-profile-container form input[type=email]:focus,
+#user-profile-container form input[type=file]:focus {
   border-color: #3f51b5;
   outline: none;
 }
@@ -47,6 +59,25 @@ body {
   font-size: 1rem;
   margin-top: 0.5rem;
   color: #333;
+}
+#user-profile-container .friend-btn {
+  margin-top: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: white;
+  background: #3f51b5;
+  transition: all 0.3s;
+}
+#user-profile-container .friend-btn:hover {
+  background: rgb(52.4655737705, 67.4557377049, 150.7344262295);
+  transform: scale(1.05);
+}
+#user-profile-container .friend-btn.pending {
+  background: gray;
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=user_profile.css.map */

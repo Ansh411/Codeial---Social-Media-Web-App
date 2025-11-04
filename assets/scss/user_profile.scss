@@ -1,63 +1,89 @@
-// body{
-//     background-color: lightblue;
-// }
-
 @import './variables';
 
-  body{
-    background: linear-gradient(120deg, #e0f3ff, #ffffff);
-  }
+body {
+  background: linear-gradient(120deg, #e0f3ff, #ffffff);
+  font-family: 'Poppins', sans-serif;
+}
 
 #user-profile-container {
-
-img {
-  border-radius: 50%;
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border: 3px solid $primary;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease;
-  &:hover {
-    transform: scale(1.05);
-  }
-}
-
-form {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
-  max-width: 300px;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
 
-  input[type="text"], input[type="email"], input[type="file"] {
-    border: 1px solid #ccc;
-    border-radius: $radius;
-    padding: 0.6rem;
-    transition: border 0.3s ease;
-    &:focus {
-      border-color: $primary;
-      outline: none;
-    }
-  }
-
-  input[type="submit"] {
-    background: $primary;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    border-radius: $radius;
-    padding: 0.7rem;
-    transition: all 0.3s;
+  img {
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid $primary;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
     &:hover {
-      background: darken($primary, 10%);
+      transform: scale(1.05);
     }
   }
-}
 
-p {
-  font-size: 1rem;
-  margin-top: 0.5rem;
-  color: $text-dark;
-}
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    max-width: 320px;
+
+    input[type='text'],
+    input[type='email'],
+    input[type='file'] {
+      border: 1px solid #ccc;
+      border-radius: $radius;
+      padding: 0.6rem;
+      transition: border 0.3s ease;
+      &:focus {
+        border-color: $primary;
+        outline: none;
+      }
+    }
+
+    input[type='submit'] {
+      background: $primary;
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      border-radius: $radius;
+      padding: 0.7rem;
+      transition: all 0.3s;
+      &:hover {
+        background: darken($primary, 10%);
+      }
+    }
+  }
+
+  p {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+    color: $text-dark;
+  }
+
+  .friend-btn {
+    margin-top: 1rem;
+    padding: 0.6rem 1rem;
+    border-radius: $radius;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    background: $primary;
+    transition: all 0.3s;
+
+    &:hover {
+      background: darken($primary, 8%);
+      transform: scale(1.05);
+    }
+
+    &.pending {
+      background: gray;
+      cursor: not-allowed;
+    }
+  }
 }

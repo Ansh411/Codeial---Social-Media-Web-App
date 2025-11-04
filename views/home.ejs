@@ -1,47 +1,58 @@
-
 <link rel="stylesheet" href="/css/home.css">
 
-<!-- <h1>
-  Codeial / <%= title %>
-</h1> -->
 <div id="home-container">
   <section id="feed-posts">
     <h3>Posts</h3>
     <% if (locals.user) { %>
-    <form action="/posts/create" id="new-post-form" method="post">
-      <textarea
-        name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
-      <input type="submit" value="Post">
-    </form>
+      <form action="/posts/create" id="new-post-form" method="post">
+        <textarea name="content" cols="30" rows="3" placeholder="Type here..." required></textarea>
+        <input type="submit" value="Post">
+      </form>
     <% } %>
 
     <div id="posts-list-container">
       <ul>
         <% for (post of posts) { %>
-           <%- include('_post') -%>
-         <%} %>
+          <%- include('_post') -%>
+        <% } %>
       </ul>
     </div>
   </section>
 
   <section id="users-friends">
     <h4>Friends</h4>
-    <% for(u of all_users) { %>
-    <p>
-      <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
-    </p>
-    <% } %>
+    <div id="friends-list">
+      <% if (locals.friends && friends.length > 0) { %>
+        <% for(friendship of friends) { %>
+          <% let friend = (friendship.from_user._id.toString() === user._id.toString()) ? friendship.to_user : friendship.from_user; %>
+          <p><a href="/users/profile/<%= friend._id %>"><%= friend.name %></a></p>
+        <% } %>
+      <% } else { %>
+        <p>No friends yet 👀</p>
+      <% } %>
+    </div>
+
+    <hr>
+
+    <h4>All Users</h4>
+    <div id="all-users-list">
+      <% for(u of all_users) { %>
+        <% if (!locals.user || user.id !== u.id) { %>
+          <p>
+            <a href="/users/profile/<%= u.id %>"><%= u.name %></a>
+          </p>
+        <% } %>
+      <% } %>
+    </div>
   </section>
 </div>
 
-<!-- importing this script for creating the comments -->
 <script src="/js/home_post_comments.js"></script>
 <script src="/js/home_posts.js"></script>
-
-<script src="js/toggle_likes.js"></script>
+<script src="/js/toggle_likes.js"></script>
 <script>
-    $('.toggle-like-button').each(function(){
-      let self = this;
-      let toggleLike = new ToggleLike(self);
-    });
+  $('.toggle-like-button').each(function () {
+    let self = this;
+    new ToggleLike(self);
+  });
 </script>
