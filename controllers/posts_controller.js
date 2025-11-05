@@ -1,13 +1,22 @@
 const Post = require('../models/posts');
 const Comment = require('../models/comment');
 const Like = require('../models/like');
+const fs = require('fs');
+const path = require('path');
 
 module.exports.create = async function(req, res){
     
     try{
-      let post = await Post.create({
+    
+    await Post.uploadedImage(req, res, async function(err){
+        if(err){
+            console.log('Multer Error: ', err);
+        }
+
+        let post = await Post.create({
         content : req.body.content,
-        user : req.user._id
+        user : req.user._id,
+        image: req.file ? Post.imagePath + '/' + req.file.filename : ''
     });
 
     if(req.xhr){
@@ -23,14 +32,15 @@ module.exports.create = async function(req, res){
 
      req.flash('success', 'Post Published!');
      return res.redirect('/');
-    }
-    catch(err){
+    });
+}
+catch(err){
         req.flash('error',err);
         return res.status(500).json({
             message: 'Internal Server Error'
         });
     }
-}
+};
 
 module.exports.destroy = async function(req , res){
     try{
@@ -41,9 +51,14 @@ module.exports.destroy = async function(req , res){
             await Like.deleteMany({likeable: post, onModel: 'Post'});
             await Like.deleteMany({_id: {$in: post.comments}});
 
-            post.remove();
-
             await Comment.deleteMany({post : req.params.id});
+
+            if(post.image && fs.existsSync(path.join(__dirname, '..', post.image))){
+                fs.unlinkSync(path.join(__dirname, '..', post.image));
+                console.log('Image Deleted: ', post.image);
+            }
+
+            await post.deleteOne();
 
             if(req.xhr){
                 return res.status(200).json({
@@ -64,7 +79,8 @@ module.exports.destroy = async function(req , res){
         }
     }
     catch(err){
-        req.flash('error',err);
+        console.error('Error deleting post: ',err);
+        req.flash('error','Internal Server Error');
         return res.redirect('/');
     }
 

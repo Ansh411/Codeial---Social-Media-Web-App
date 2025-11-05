@@ -70,4 +70,241 @@
     }
 }
 
+/* --- Instagram-like Post Card Styles --- */
+.post-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+  margin-bottom: 24px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  }
+
+  .post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    font-weight: 600;
+    background: #f8f9fc;
+  }
+
+  .post-image img {
+    width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+  }
+
+  .post-caption {
+    padding: 12px 16px;
+    font-size: 15px;
+    color: #333;
+  }
+
+  .post-actions {
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    border-top: 1px solid #eee;
+
+    .heart {
+      font-size: 18px;
+      color: #888;
+      text-decoration: none;
+      transition: transform 0.2s ease, color 0.3s ease;
+
+      &.liked {
+        color: #e63946;
+        animation: heartBeat 0.3s ease;
+      }
+
+      &:hover {
+        transform: scale(1.2);
+        color: #e63946;
+      }
+
+      span {
+        font-size: 14px;
+        margin-left: 4px;
+      }
+    }
+  }
+
+  .post-comments {
+    padding: 10px 16px;
+    background: #fafafa;
+    form {
+      display: flex;
+      margin-top: 8px;
+      input[type='text'] {
+        flex: 1;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        padding: 6px 8px;
+      }
+      input[type='submit'] {
+        margin-left: 8px;
+        background: $primary;
+        color: white;
+        border-radius: 8px;
+      }
+    }
+  }
+}
+/* --- POST CREATION FORM STYLING --- */
+.create-post-form {
+  background: #fff;
+  padding: 18px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 26px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  #post-content {
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    padding: 12px 14px;
+    min-height: 90px;
+    resize: none;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #333;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease;
+
+    &:focus {
+      border-color: $primary;
+      box-shadow: 0 0 6px rgba($primary, 0.25);
+      outline: none;
+    }
+  }
+
+    .form-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; // makes it responsive
+    gap: 10px;
+  }
+
+  .upload-section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+
+    .upload-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, $primary, lighten($primary, 8%));
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        transform: scale(1.05);
+        background: linear-gradient(90deg, lighten($primary, 5%), $primary);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      max-height: 280px;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    .hidden {
+      display: none;
+    }
+  }
+
+  .share-btn {
+    align-self: flex-end;
+    padding: 10px 18px;
+    background: linear-gradient(135deg, #0078ff, #00b4d8);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
+
+/* Upload preview styling */
+.upload-section {
+  margin-top: 10px;
+  .upload-label {
+    display: inline-block;
+    background: $primary;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    &:hover { background: darken($primary, 10%); }
+  }
+  img {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  }
+  .hidden {
+    display: none;
+  }
+}
+
+/* Heart animation */
+@keyframes heartBeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.25); }
+  50% { transform: scale(0.9); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+
 @import './chat_box.scss';

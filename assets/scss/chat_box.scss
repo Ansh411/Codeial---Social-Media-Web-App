@@ -1,6 +1,6 @@
 @import './variables';
 
-/* Ensure sidebar defines positioning context */
+/* Sidebar remains the logical parent but chat floats relative to viewport */
 #users-friends {
   position: relative;
   display: flex;
@@ -13,14 +13,19 @@
   to { transform: translateY(0); opacity: 1; }
 }
 
+/* --- CHAT WRAPPER (floats visually near sidebar) --- */
 #sidebar-chat-wrapper {
-  position: relative;
-  margin-top: auto; /* push chat box to bottom of sidebar */
+  position: fixed;
+  bottom: 20px;
+  right: 2.5%; /* align with sidebar visually */
+  width: 320px; /* fixed width so it doesn’t shrink on resize */
+  max-width: 90vw;
+  z-index: 100;
+  animation: slideUp 0.3s ease;
 }
 
 /* --- CHAT BOX STYLES --- */
 #user-chat-box {
-  margin-top: 16px;
   width: 100%;
   height: 360px;
   border-radius: 14px;
@@ -30,13 +35,13 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  z-index: 30;
   animation: slideUp 0.3s ease;
 
   &.hidden {
     display: none;
   }
 
+  /* Header */
   .chat-header {
     display: flex;
     justify-content: space-between;
@@ -45,7 +50,6 @@
     color: #fff;
     padding: 10px 14px;
     font-weight: 600;
-    letter-spacing: 0.2px;
 
     #close-chat {
       background: rgba(255,255,255,0.15);
@@ -67,7 +71,7 @@
     }
   }
 
-  /* --- Chat Messages Styling --- */
+  /* Messages */
   #chat-messages-list {
     flex: 1;
     list-style: none;
@@ -77,7 +81,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    background: transparent;
 
     .message {
       display: flex;
@@ -90,9 +93,8 @@
         font-size: 14px;
         line-height: 1.4;
         border-radius: 14px;
-        display: inline-block;
-        width: fit-content;
         box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+        width: fit-content;
       }
 
       sub {
@@ -105,37 +107,26 @@
       &.self {
         align-self: flex-end;
         text-align: right;
-
         span.bubble {
           background: $primary;
           color: #fff;
           border-radius: 14px 14px 6px 14px;
-        }
-
-        sub {
-          text-align: right;
-          color: rgba(0, 0, 0, 0.45);
         }
       }
 
       &.other {
         align-self: flex-start;
         text-align: left;
-
         span.bubble {
           background: #eef7ff;
           color: #111;
           border-radius: 14px 14px 14px 6px;
         }
-
-        sub {
-          text-align: left;
-          color: rgba(0, 0, 0, 0.45);
-        }
       }
     }
   }
 
+  /* Message input */
   #chat-message-input-container {
     padding: 10px;
     border-top: 1px solid #ddd;
@@ -174,22 +165,22 @@
 
 /* --- REOPEN CHAT BUBBLE --- */
 #open-chat-bubble {
-  position: absolute;  /* stays within sidebar now */
+  position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 2.5%;
   width: 56px;
   height: 56px;
   border-radius: 50%;
   background: linear-gradient(135deg, #0078ff, #00b4d8);
   color: #fff;
   font-size: 26px;
-  display: none; /* hidden until chat is closed */
+  display: none;
   align-items: center;
   justify-content: center;
   text-align: center;
   box-shadow: 0 6px 18px rgba(0,0,0,0.2);
   cursor: pointer;
-  z-index: 40;
+  z-index: 200;
   transition: all 0.25s ease;
   line-height: 56px;
   font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
@@ -202,28 +193,14 @@
 
 /* --- MOBILE RESPONSIVE --- */
 @media (max-width: 720px) {
-  #user-chat-box {
-    position: fixed;
-    left: 10px;
+  #sidebar-chat-wrapper {
     right: 10px;
+    left: 10px;
     bottom: 12px;
     width: auto;
-    max-width: none;
-    height: 340px;
   }
   #open-chat-bubble {
     right: 16px;
     bottom: 16px;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
   }
 }

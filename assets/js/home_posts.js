@@ -8,6 +8,11 @@
         newPostForm.submit(function(e){
             e.preventDefault();
 
+            if ($('#post-image').val()) {
+            this.submit();
+            return;
+        }
+
             $.ajax({
                 type: 'post',
                 url: '/posts/create',
