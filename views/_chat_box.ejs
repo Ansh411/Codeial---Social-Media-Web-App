@@ -1,0 +1,37 @@
+<!-- <% if(locals.user) { %>
+    <div id="user-chat-box">
+        <ul id="chat-messages-list">
+            <li class="other-message">
+                <span>Other Message (template)</span>
+            </li>
+            <li class="self-message">
+                <span>
+                    Self Message (template)
+                </span>
+            </li>
+        </ul>
+        <div id="chat-message-input-container">
+            <input id="chat-message-input" placeholder="Type message here">
+            <button id="send-message">Send</button>
+        </div>
+    </div> 
+<% } %> -->
+
+<% if (locals.user) { %>
+  <div id="user-chat-box">
+    <div class="chat-header">
+      💬 Codeial Chat
+      <button id="close-chat" title="Close">✖</button>
+    </div>
+
+    <ul id="chat-messages-list"></ul>
+
+    <div id="chat-message-input-container">
+      <input id="chat-message-input" placeholder="Type message here">
+      <button id="send-message">Send</button>
+    </div>
+  </div>
+
+  <!-- Reopen chat bubble -->
+  <div id="open-chat-bubble" title="Open chat">💬</div>
+<% } %>
