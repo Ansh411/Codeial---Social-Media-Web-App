@@ -1,0 +1,92 @@
+/* --- Auth Container --- */
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+  background: linear-gradient(135deg, rgb(227.9241803279, 230.6168032787, 245.5758196721), #fafafa);
+}
+
+/* --- Card Style --- */
+.auth-card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 40px 35px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.auth-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+}
+.auth-card h1 {
+  margin-bottom: 25px;
+  font-size: 28px;
+  color: #3f51b5;
+  font-weight: 600;
+  text-align: center;
+}
+.auth-card form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.auth-card form input[type=text],
+.auth-card form input[type=email],
+.auth-card form input[type=password] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  transition: all 0.25s ease;
+}
+.auth-card form input[type=text]:focus,
+.auth-card form input[type=email]:focus,
+.auth-card form input[type=password]:focus {
+  border-color: #3f51b5;
+  box-shadow: 0 0 6px rgba(0, 120, 255, 0.25);
+  outline: none;
+}
+.auth-card form input[type=submit] {
+  background: linear-gradient(135deg, #3f51b5, rgb(87.9459016393, 104.5590163934, 196.8540983607));
+  color: #fff;
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  font-size: 16px;
+}
+.auth-card form input[type=submit]:hover {
+  background: linear-gradient(135deg, rgb(76.5963114754, 94.3381147541, 192.9036885246), #3f51b5);
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+}
+.auth-card form input[type=submit]:active {
+  transform: scale(0.98);
+}
+.auth-card .links {
+  margin-top: 15px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.auth-card .links a {
+  color: #3f51b5;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+.auth-card .links a:hover {
+  color: #ff4081;
+}
+
+/*# sourceMappingURL=sign_in_up.css.map */
