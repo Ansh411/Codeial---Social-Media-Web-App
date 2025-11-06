@@ -1,4 +1,5 @@
 const express = require('express');
+const env = require('./config/environment');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -45,8 +46,8 @@ console.log('Chat server is listening on port 5000');
 
 app.use(
     sassMiddleware({
-    src: './assets/scss',
-    dest: './assets/css',
+    src: path.join(__dirname, env.asset_path, '/scss'),
+    dest: path.join(__dirname, env.asset_path, '/css'),
     debug: true,
     prefix: '/css',
     outputStyle: 'extended',
@@ -62,7 +63,7 @@ app.use(express.urlencoded());
 
 app.use(cookieParser());
 
-app.use(express.static('./assets'));
+app.use(express.static(env.asset_path));
 
 // Make the uploads path available to the browser
 
@@ -86,7 +87,7 @@ app.set('views' ,'./views');
 app.use(session({
     name : 'codeial',
     // TODO change the secret before deployment in production mode
-    secret : 'blahsomething',
+    secret : env.session_cookie_key,
     saveUninitialized : false,
     resave : false,
     cookie : {
