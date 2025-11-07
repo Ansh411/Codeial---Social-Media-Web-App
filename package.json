@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "concurrently \"npm run sass\" \"nodemon index.js\"",
     "start": "nodemon index,js",
+    "prod_start": "cross-env CODEIAL_ENVIRONMENT=production nodemon index.js",
     "sass": "npx sass assets/scss:assets/css --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,17 +30,20 @@
     "jsonwebtoken": "^9.0.2",
     "kue": "^0.11.6",
     "mongoose": "^6.9.2",
+    "morgan": "^1.10.1",
     "multer": "^2.0.2",
     "nodemailer": "^7.0.10",
     "passport": "^0.7.0",
     "passport-google-oauth": "^2.0.0",
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
+    "rotating-file-stream": "^2.1.6",
     "sass": "^1.93.2",
     "sass-middleware": "^0.0.3",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1"
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0"
   }
 }

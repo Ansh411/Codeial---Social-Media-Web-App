@@ -1,5 +1,6 @@
 const express = require('express');
 const env = require('./config/environment');
+const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
 const port = 8000;
@@ -44,15 +45,18 @@ const chatSockets = require('./config/chat_sockets').chatSockets(chatServer);
 chatServer.listen(5000);
 console.log('Chat server is listening on port 5000');
 
-app.use(
+if(env.name == 'development'){
+    app.use(
     sassMiddleware({
     src: path.join(__dirname, env.asset_path, '/scss'),
     dest: path.join(__dirname, env.asset_path, '/css'),
     debug: true,
     prefix: '/css',
     outputStyle: 'extended',
-})
-);
+    })
+ );
+}
+
 
 // app.use('/css', (req, res, next) => {
 //   console.log('Requesting CSS file:', req.url);
@@ -68,6 +72,8 @@ app.use(express.static(env.asset_path));
 // Make the uploads path available to the browser
 
 app.use('/uploads' , express.static(__dirname + '/uploads'));
+
+app.use(logger(env.morgan.mode , env.morgan.options));
 
 app.use(expressLayouts);
 
