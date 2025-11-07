@@ -1,56 +1,15 @@
-// #layout-header{
-//     nav{
-//         display: flex;
-//         justify-content: space-between;
-//         padding: 0 10px;
-//         background: #2196f3;
-//         color: white;
-//         box-shadow: 1px 1px 1px 1px lightgrey;
-
-//         .min-logo{
-//             p{
-//                 margin: 5px;
-//                 font-size: 1.4rem;
-//                 font-weight: bold;
-//             }
-//         }
-//         a{
-//             font-family: sans-serif;
-//             font-size: 20px;
-//             font-weight: bold;
-//         }
-//         .auth-links{
-//             ul{
-//                 margin: 5% 5px;
-//                 display: flex;
-//                 list-style: none;
-
-//                 li{
-//                     margin-right: 10px;
-//                     padding-right: 10px;
-//                     padding-top: 5px;
-//                 }
-//             }
-//         }
-
-//         a{
-//             color: white;
-//             text-decoration: none;
-//         }
-//     }
-// }
-
-@import 'variables';
+@use "sass:color";
+@use 'variables' as vars;
 
 // === Header Container ===
 #layout-header {
-    background-color: $primary;
-    color: $text-light;
+    background-color: vars.$primary;
+    color: vars.$text-light;
     padding: 15px 40px;
-    box-shadow: $shadow;
-    border-bottom-left-radius: $radius;
-    border-bottom-right-radius: $radius;
-    transition: $transition;
+    box-shadow: vars.$shadow;
+    border-bottom-left-radius: vars.$radius;
+    border-bottom-right-radius: vars.$radius;
+    transition: vars.$transition;
 
     // === Nav Flex Layout ===
     nav {
@@ -64,11 +23,11 @@
             font-size: 1.8rem;
             font-weight: 700;
             text-decoration: none;
-            color: $text-light;
-            transition: $transition;
+            color: vars.$text-light;
+            transition: vars.$transition;
 
             &:hover {
-                color: $accent;
+                color: vars.$accent;
                 transform: scale(1.05);
             }
         }
@@ -89,15 +48,15 @@
 
                 a {
                     text-decoration: none;
-                    color: $text-light;
+                    color: vars.$text-light;
                     font-weight: 500;
                     font-size: larger;
-                    transition: $transition;
+                    transition: vars.$transition;
                     padding: 8px 14px;
-                    border-radius: $radius;
+                    border-radius: vars.$radius;
 
                     &:hover {
-                        background-color: $accent;
+                        background-color: vars.$accent;
                         color: white;
                         transform: translateY(-2px);
                     }

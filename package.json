@@ -4,7 +4,7 @@
   "description": "My social media web application",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"npm run sass\" \"nodemon index.js\"",
+    "dev": "cross-env CODEIAL_ENVIRONMENT=development concurrently \"npm run sass\" \"nodemon index.js\"",
     "start": "nodemon index,js",
     "prod_start": "cross-env CODEIAL_ENVIRONMENT=production nodemon index.js",
     "sass": "npx sass assets/scss:assets/css --watch",
@@ -23,10 +23,13 @@
     "cookie-parser": "^1.4.7",
     "cors": "^2.8.5",
     "crypto": "^1.0.1",
+    "del": "^6.1.1",
     "ejs": "^3.1.10",
     "express": "^5.1.0",
     "express-ejs-layouts": "^2.5.1",
     "express-session": "^1.18.2",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-sass": "^6.0.1",
     "jsonwebtoken": "^9.0.2",
     "kue": "^0.11.6",
     "mongoose": "^6.9.2",
@@ -38,12 +41,17 @@
     "passport-jwt": "^4.0.1",
     "passport-local": "^1.0.0",
     "rotating-file-stream": "^2.1.6",
-    "sass": "^1.93.2",
+    "sass": "^1.93.3",
     "sass-middleware": "^0.0.3",
     "socket.io": "^4.8.1"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "cssnano": "^7.1.2",
+    "gulp": "^5.0.1",
+    "gulp-postcss": "^10.0.0",
+    "gulp-rev": "^9.0.0",
+    "gulp-terser": "^2.1.0"
   }
 }

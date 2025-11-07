@@ -1,4 +1,5 @@
-@import './variables';
+@use "sass:color";
+@use './variables' as vars;
 
 /* Sidebar remains the logical parent but chat floats relative to viewport */
 #users-friends {
@@ -46,7 +47,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: linear-gradient(90deg, $primary, lighten($primary, 8%));
+    background: linear-gradient(90deg, vars.$primary, color.adjust(vars.$primary, $lightness : 8%));
     color: #fff;
     padding: 10px 14px;
     font-weight: 600;
@@ -108,7 +109,7 @@
         align-self: flex-end;
         text-align: right;
         span.bubble {
-          background: $primary;
+          background: vars.$primary;
           color: #fff;
           border-radius: 14px 14px 6px 14px;
         }
@@ -141,15 +142,15 @@
       border: 1px solid #ccc;
       outline: none;
       &:focus {
-        border-color: $primary;
-        box-shadow: 0 0 4px rgba($primary, 0.2);
+        border-color: vars.$primary;
+        box-shadow: 0 0 4px rgba(vars.$primary, 0.2);
       }
     }
 
     #send-message {
       padding: 10px 14px;
       border-radius: 10px;
-      background: $primary;
+      background: vars.$primary;
       color: white;
       border: none;
       cursor: pointer;

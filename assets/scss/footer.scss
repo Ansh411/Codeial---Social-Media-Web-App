@@ -1,42 +1,18 @@
-// #layout-footer{
-//     color: white;
-//     a{
-//         color: white;
-//         text-decoration: none;
-//     }
-
-//     background: grey;
-//     padding: 5px 10px;
-//     display: flex;
-//     justify-content: space-evenly;
-
-//     .footer-nav{
-//         ul{
-//             list-style: none;
-//             display: flex;
-//             li{
-//                 margin-right: 10px;
-//                 padding-right: 10px;
-//                 padding-top: 5px;
-//             }
-//         }
-//     }
-// }
-
-@import 'variables';
+@use "sass:color";
+@use 'variables' as vars;
 
 #layout-footer {
-    background-color: $primary;
-    color: $text-light;
+    background-color: vars.$primary;
+    color: vars.$text-light;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    border-top-left-radius: $radius;
-    border-top-right-radius: $radius;
-    box-shadow: $shadow;
+    border-top-left-radius: vars.$radius;
+    border-top-right-radius: vars.$radius;
+    box-shadow: vars.$shadow;
     flex-wrap: wrap;
-    transition: $transition;
+    transition: vars.$transition;
 
     .footer-nav {
         ul {
@@ -47,12 +23,12 @@
             padding: 0;
 
             li a {
-                color: $text-light;
+                color: vars.$text-light;
                 text-decoration: none;
-                transition: $transition;
+                transition: vars.$transition;
 
                 &:hover {
-                    color: $accent;
+                    color: vars.$accent;
                     text-decoration: underline;
                 }
             }

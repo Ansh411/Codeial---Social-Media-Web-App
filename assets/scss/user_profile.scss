@@ -1,4 +1,5 @@
-@import './variables';
+@use "sass:color";
+@use './variables' as vars;
 
 body {
   background: linear-gradient(120deg, #e0f3ff, #ffffff);
@@ -17,7 +18,7 @@ body {
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 3px solid $primary;
+    border: 3px solid vars.$primary;
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
     &:hover {
@@ -35,26 +36,26 @@ body {
     input[type='email'],
     input[type='file'] {
       border: 1px solid #ccc;
-      border-radius: $radius;
+      border-radius: vars.$radius;
       padding: 0.6rem;
       transition: border 0.3s ease;
       &:focus {
-        border-color: $primary;
+        border-color: vars.$primary;
         outline: none;
       }
     }
 
     input[type='submit'] {
-      background: $primary;
+      background: vars.$primary;
       color: white;
       font-weight: 600;
       cursor: pointer;
       border: none;
-      border-radius: $radius;
+      border-radius: vars.$radius;
       padding: 0.7rem;
       transition: all 0.3s;
       &:hover {
-        background: darken($primary, 10%);
+        background: color.adjust(vars.$primary, $lightness : -10%);
       }
     }
   }
@@ -62,22 +63,22 @@ body {
   p {
     font-size: 1rem;
     margin-top: 0.5rem;
-    color: $text-dark;
+    color: vars.$text-dark;
   }
 
   .friend-btn {
     margin-top: 1rem;
     padding: 0.6rem 1rem;
-    border-radius: $radius;
+    border-radius: vars.$radius;
     border: none;
     cursor: pointer;
     font-weight: 600;
     color: white;
-    background: $primary;
+    background: vars.$primary;
     transition: all 0.3s;
 
     &:hover {
-      background: darken($primary, 8%);
+      background: color.adjust(vars.$primary, $lightness : -8%);
       transform: scale(1.05);
     }
 

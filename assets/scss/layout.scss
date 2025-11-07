@@ -1,14 +1,4 @@
-// body{
-//     margin : 0;
-//     // text-align: center;
-
-//     #layout-main{
-//     height: 100%;
-//     }
-// }
-
-@import './variables';
-
+@use "sass:color";
 $primary: #0078ff;
 $accent: #ff006e;
 $bg: #f9f9fb;
@@ -54,7 +44,7 @@ input[type="submit"], button {
   cursor: pointer;
   transition: background 0.3s ease;
   &:hover {
-    background: darken($primary, 10%);
+    background: color.adjust($primary, $lightness: -10%);
   }
 }
 

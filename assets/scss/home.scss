@@ -1,38 +1,21 @@
-// #home-container{
-//     display: flex;
-//     // align-items: stretch;
-//     min-height: 100vh;
-
-//     #feed-posts{
-//         width: 70%;
-//         padding: 10px;
-//     }
-
-//     #users-friends{
-//         width: 30%;
-//         padding: 10px;
-//         border-left: 1px solid lightgrey;
-//         // height: 100%;
-//     }
-// }
-
-@import './variables';
+@use "sass:color";
+@use './variables' as vars;
 
 
 #home-container {
     display: flex;
     justify-content: space-between;
     min-height: 100vh;
-    background: linear-gradient(135deg, $secondary 0%, lighten($primary, 45%) 100%);
+    background: linear-gradient(135deg, vars.$secondary 0%, color.adjust(vars.$primary, $lightness : 45%) 100%);
     padding: 20px;
 
     #feed-posts {
         width: 68%;
-        background: $bg;
+        background: vars.$bg;
         padding: 20px;
-        border-radius: $radius;
-        box-shadow: $shadow;
-        transition: $transition;
+        border-radius: vars.$radius;
+        box-shadow: vars.$shadow;
+        transition: vars.$transition;
 
         &:hover {
             transform: translateY(-3px);
@@ -42,15 +25,15 @@
 
     #users-friends {
         width: 28%;
-        background: $bg;
+        background: vars.$bg;
         padding: 20px;
-        border-radius: $radius;
-        box-shadow: $shadow;
-        border-left: 2px solid lighten($primary, 40%);
-        transition: $transition;
+        border-radius: vars.$radius;
+        box-shadow: vars.$shadow;
+        border-left: 2px solid color.adjust(vars.$primary, $lightness : 40%);
+        transition: vars.$transition;
 
         h4 {
-            color: $primary;
+            color: vars.$primary;
             margin-bottom: 10px;
             font-weight: bold;
         }
@@ -58,12 +41,12 @@
         li {
             list-style: none;
             margin: 10px 0;
-            color: $text-dark;
+            color: vars.$text-dark;
             cursor: pointer;
-            transition: $transition;
+            transition: vars.$transition;
 
             &:hover {
-                color: $accent;
+                color: vars.$accent;
                 transform: translateX(5px);
             }
         }
@@ -148,7 +131,7 @@
       }
       input[type='submit'] {
         margin-left: 8px;
-        background: $primary;
+        background: vars.$primary;
         color: white;
         border-radius: 8px;
       }
@@ -186,8 +169,8 @@
     transition: all 0.2s ease;
 
     &:focus {
-      border-color: $primary;
-      box-shadow: 0 0 6px rgba($primary, 0.25);
+      border-color: vars.$primary;
+      box-shadow: 0 0 6px rgba(vars.$primary, 0.25);
       outline: none;
     }
   }
@@ -210,7 +193,7 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: linear-gradient(90deg, $primary, lighten($primary, 8%));
+      background: linear-gradient(90deg, vars.$primary, color.adjust(vars.$primary, $lightness : 8%));
       color: #fff;
       padding: 8px 16px;
       border-radius: 50px;
@@ -222,7 +205,7 @@
 
       &:hover {
         transform: scale(1.05);
-        background: linear-gradient(90deg, lighten($primary, 5%), $primary);
+        background: linear-gradient(90deg, color.adjust(vars.$primary, $lightness : 5%), vars.$primary);
         box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
       }
     }
@@ -275,13 +258,13 @@
   margin-top: 10px;
   .upload-label {
     display: inline-block;
-    background: $primary;
+    background: vars.$primary;
     color: #fff;
     padding: 6px 12px;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s ease;
-    &:hover { background: darken($primary, 10%); }
+    &:hover { background: color.adjust(vars.$primary, $lightness : -10%); }
   }
   img {
     display: block;
@@ -307,4 +290,3 @@
 }
 
 
-@import './chat_box.scss';

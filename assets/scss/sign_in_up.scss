@@ -1,4 +1,5 @@
-@import './variables';
+@use "sass:color";
+@use './variables' as vars;
 
 /* --- Auth Container --- */
 .auth-container {
@@ -7,13 +8,13 @@ justify-content: center;
 align-items: center;
 min-height: 80vh; // vertical center
 padding: 20px;
-background: linear-gradient(135deg, lighten($primary, 45%), $bg);
+background: linear-gradient(135deg, color.adjust(vars.$primary, $lightness : 45%), vars.$bg);
 }
 
 /* --- Card Style --- */
 .auth-card {
 background: #fff;
-border-radius: $radius;
+border-radius: vars.$radius;
 padding: 40px 35px;
 width: 100%;
 max-width: 400px;
@@ -31,7 +32,7 @@ box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
 h1 {
 margin-bottom: 25px;
 font-size: 28px;
-color: $primary;
+color: vars.$primary;
 font-weight: 600;
 text-align: center;
 }
@@ -47,30 +48,30 @@ input[type="email"],
 input[type="password"] {
   width: 100%;
   padding: 12px 14px;
-  border-radius: $radius;
+  border-radius: vars.$radius;
   border: 1px solid #ccc;
   font-size: 15px;
   transition: all 0.25s ease;
 
   &:focus {
-    border-color: $primary;
+    border-color: vars.$primary;
     box-shadow: 0 0 6px rgba(0, 120, 255, 0.25);
     outline: none;
   }
 }
 
 input[type="submit"] {
-  background: linear-gradient(135deg, $primary, lighten($primary, 8%));
+  background: linear-gradient(135deg, vars.$primary, color.adjust(vars.$primary, $lightness: 8%));
   color: #fff;
   font-weight: 600;
-  border-radius: $radius;
+  border-radius: vars.$radius;
   padding: 12px;
   cursor: pointer;
   transition: all 0.25s ease;
   font-size: 16px;
 
   &:hover {
-    background: linear-gradient(135deg, lighten($primary, 5%), $primary);
+    background: linear-gradient(135deg, color.adjust(vars.$primary, $lightness: 5%), vars.$primary);
     transform: translateY(-2px) scale(1.02);
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
   }
@@ -91,12 +92,12 @@ gap: 8px;
 
 
 a {
-  color: $primary;
+  color: vars.$primary;
   font-weight: 500;
   transition: color 0.25s ease;
 
   &:hover {
-    color: $accent;
+    color: vars.$accent;
   }
 }
 
