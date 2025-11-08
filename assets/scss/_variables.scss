@@ -1,9 +1,44 @@
-$primary: #3f51b5;
-$secondary: #f5f5f5;
-$accent: #ff4081;
-$text-dark: #333;
-$text-light: #fff;
-$bg: #fafafa;
-$radius: 10px;
+// $primary: #3f51b5;
+// $secondary: #f5f5f5;
+// $accent: #ff4081;
+// $text-dark: #333;
+// $text-light: #fff;
+// $bg: #fafafa;
+// $radius: 10px;
+// $transition: all 0.3s ease-in-out;
+// $shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+/* ================================================
+   File: _variables.scss
+   Purpose: Global constants and reusable design tokens
+   ================================================= */
+
+// $radius: 12px;
+// $transition: all 0.3s ease-in-out;
+// $shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+// /* Fonts */
+// $font-stack: 'Poppins', sans-serif;
+
+// /* Default color fallback (used if CSS vars not loaded) */
+// $primary: #3f51b5;
+// $secondary: #f5f5f5;
+// $accent: #ff4081;
+// $text-dark: #333;
+// $text-light: #fff;
+// $bg: #fafafa;
+
+
+$radius: 12px;
 $transition: all 0.3s ease-in-out;
-$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+$shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+
+/* Fonts */
+$font-stack: 'Poppins', sans-serif;
+
+/* Sizes */
+$chat-width: 320px;
+$chat-height: 360px;
+$chat-bubble-max-width: 75%;
+$input-radius: 10px;
+$button-radius: 10px;

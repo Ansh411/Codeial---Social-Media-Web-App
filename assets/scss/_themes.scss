@@ -1,0 +1,86 @@
+// :root {
+//   --primary-color: #8458B3;
+//   --accent-color: #d0bdf4;
+//   --highlight-color: #a0d2eb;
+//   --neutral-color: #a28089;
+//   --bg-color: #e5eaf5;
+//   --surface-color: #ffffff;
+//   --text-color: #2a2a2a;
+//   --shadow-color: rgba(0, 0, 0, 0.08);
+
+//   /* Add this */
+//   --primary-gradient: linear-gradient(135deg, #8458B3, #a0d2eb);
+// }
+
+// [data-theme='dark'] {
+//   --primary-color: #d0bdf4;
+//   --accent-color: #8458B3;
+//   --highlight-color: #a0d2eb;
+//   --neutral-color: #a28089;
+//   --bg-color: #2b2730;
+//   --surface-color: #3a3242;
+//   --text-color: #f2f2f2;
+//   --shadow-color: rgba(255, 255, 255, 0.08);
+
+//   /* Add this */
+//   --primary-gradient: linear-gradient(135deg, #a0d2eb, #8458B3);
+// }
+
+// body {
+//   transition: background 0.4s ease, color 0.4s ease;
+// }
+/* themes.scss */
+
+/* Light theme */
+:root {
+  --primary-color: #8458B3;
+  --accent-color: #d0bdf4;
+  --highlight-color: #a0d2eb;
+  --neutral-color: #a28089;
+  --bg-color: #e5eaf5;
+  --surface-color: #ffffff;
+  --text-color: #2a2a2a;
+  --text-secondary: #555555;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  --primary-gradient: linear-gradient(135deg, #8458B3, #a0d2eb);
+  --bubble-self-bg: var(--primary-color);
+  --bubble-other-bg: var(--highlight-color);
+}
+
+/* Dark theme */
+[data-theme='dark'] {
+  --primary-color: #d0bdf4;
+  --accent-color: #8458B3;
+  --highlight-color: #a0d2eb;
+  --neutral-color: #a28089;
+  --bg-color: #2b2730;
+  --surface-color: #3a3242;
+  --text-color: #f2f2f2;
+  --text-secondary: #CFCFCF;
+  --shadow-color: rgba(255, 255, 255, 0.08);
+  --primary-gradient: linear-gradient(135deg, #a0d2eb, #8458B3);
+  --bubble-self-bg: var(--primary-color);
+  --bubble-other-bg: var(--highlight-color);
+}
+
+/* Smooth transitions for theme changes */
+body {
+  transition: background 0.4s ease, color 0.4s ease;
+}
+
+:root {
+  --bubble-self-bg: #78acc1;
+  --bubble-other-bg: 	#e5e5e5;
+  --bubble-text-self: #FFFFFF;
+  --bubble-text-other: #111111;
+  --send-button-bg: #78acc1;
+  --send-button-text: var(--text-light);
+}
+[data-theme='dark'] {
+  --bubble-self-bg: #78acc1;
+  --bubble-other-bg: #55525e;
+  --bubble-text-self: #FFFFFF;
+  --bubble-text-other: #E5E5E5;
+  --send-button-bg: #78acc1;
+  --send-button-text: var(--text-light);
+}

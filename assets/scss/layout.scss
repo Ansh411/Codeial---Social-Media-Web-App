@@ -1,24 +1,71 @@
-@use "sass:color";
-$primary: #0078ff;
-$accent: #ff006e;
-$bg: #f9f9fb;
-$text-dark: #222;
-$radius: 12px;
+// @use "sass:color";
+// $primary: #0078ff;
+// $accent: #ff006e;
+// $bg: #f9f9fb;
+// $text-dark: #222;
+// $radius: 12px;
+
+// body {
+//   margin: 0;
+//   font-family: 'Poppins', sans-serif;
+//   background: linear-gradient(135deg, #ffffff, $bg);
+//   color: $text-dark;
+//   min-height: 100vh;
+//   display: flex;
+//   flex-direction: column;
+// }
+
+// main#layout-main {
+//   flex: 1;
+//   padding: 2rem;
+//   animation: fadeIn 0.5s ease-in-out;
+// }
+
+// @keyframes fadeIn {
+//   from { opacity: 0; transform: translateY(10px); }
+//   to { opacity: 1; transform: translateY(0); }
+// }
+
+// a {
+//   text-decoration: none;
+//   color: $primary;
+//   transition: color 0.2s ease;
+//   &:hover {
+//     color: $accent;
+//   }
+// }
+
+// input[type="submit"], button {
+//   background: $primary;
+//   color: white;
+//   border: none;
+//   padding: 0.6rem 1.2rem;
+//   border-radius: $radius;
+//   cursor: pointer;
+//   transition: background 0.3s ease;
+//   &:hover {
+//     background: color.adjust($primary, $lightness: -10%);
+//   }
+// }
+
+@use './variables' as vars;
+@use './themes';
 
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, #ffffff, $bg);
-  color: $text-dark;
+  font-family: vars.$font-stack;
+  background: var(--bg-color);
+  color: var(--text-color);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  transition: vars.$transition;
 }
 
 main#layout-main {
   flex: 1;
   padding: 2rem;
-  animation: fadeIn 0.5s ease-in-out;
+  animation: fadeIn 0.4s ease-in-out;
 }
 
 @keyframes fadeIn {
@@ -27,24 +74,21 @@ main#layout-main {
 }
 
 a {
+  color: var(--primary-color);
   text-decoration: none;
-  color: $primary;
   transition: color 0.2s ease;
-  &:hover {
-    color: $accent;
-  }
+  &:hover { color: var(--highlight-color); }
 }
 
-input[type="submit"], button {
-  background: $primary;
+button, input[type='submit'] {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
-  border-radius: $radius;
+  border-radius: vars.$radius;
   cursor: pointer;
-  transition: background 0.3s ease;
-  &:hover {
-    background: color.adjust($primary, $lightness: -10%);
-  }
+  transition: all 0.3s ease;
+  &:hover { transform: scale(1.05); }
 }
+
 

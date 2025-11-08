@@ -1,69 +1,151 @@
-@use "sass:color";
-@use 'variables' as vars;
+// @use "sass:color";
+// @use 'variables' as vars;
 
-// === Header Container ===
+// // === Header Container ===
+// #layout-header {
+//     background-color: vars.$primary;
+//     color: vars.$text-light;
+//     padding: 15px 40px;
+//     box-shadow: vars.$shadow;
+//     border-bottom-left-radius: vars.$radius;
+//     border-bottom-right-radius: vars.$radius;
+//     transition: vars.$transition;
+
+//     // === Nav Flex Layout ===
+//     nav {
+//         display: flex;
+//         align-items: center;
+//         justify-content: space-between;
+//         flex-wrap: wrap;
+
+//         // --- Logo Section ---
+//         .mini-logo a {
+//             font-size: 1.8rem;
+//             font-weight: 700;
+//             text-decoration: none;
+//             color: vars.$text-light;
+//             transition: vars.$transition;
+
+//             &:hover {
+//                 color: vars.$accent;
+//                 transform: scale(1.05);
+//             }
+//         }
+
+//         // --- Auth Links ---
+//         .auth-links {
+//             ul {
+//                 display: flex;
+//                 align-items: center;
+//                 gap: 20px;
+//                 margin: 0;
+//                 padding: 0;
+//                 list-style: none; // removes bullets
+
+//                 li {
+//                     list-style: none;
+//                 }
+
+//                 a {
+//                     text-decoration: none;
+//                     color: vars.$text-light;
+//                     font-weight: 500;
+//                     font-size: larger;
+//                     transition: vars.$transition;
+//                     padding: 8px 14px;
+//                     border-radius: vars.$radius;
+
+//                     &:hover {
+//                         background-color: vars.$accent;
+//                         color: white;
+//                         transform: translateY(-2px);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+
+@use './variables' as vars;
+
 #layout-header {
-    background-color: vars.$primary;
-    color: vars.$text-light;
-    padding: 15px 40px;
-    box-shadow: vars.$shadow;
-    border-bottom-left-radius: vars.$radius;
-    border-bottom-right-radius: vars.$radius;
-    transition: vars.$transition;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+  color: white;
+  padding: 15px 40px;
+  border-bottom-left-radius: vars.$radius;
+  border-bottom-right-radius: vars.$radius;
+  box-shadow: vars.$shadow;
+  transition: vars.$transition;
 
-    // === Nav Flex Layout ===
-    nav {
+  nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+
+    .mini-logo a {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: white;
+      text-decoration: none;
+      transition: vars.$transition;
+
+      &:hover {
+        color: var(--highlight-color);
+        transform: scale(1.05);
+      }
+    }
+
+    .auth-links ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
+
+      li {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        flex-wrap: wrap;
 
-        // --- Logo Section ---
-        .mini-logo a {
-            font-size: 1.8rem;
-            font-weight: 700;
-            text-decoration: none;
-            color: vars.$text-light;
-            transition: vars.$transition;
+        a {
+          color: white;
+          font-weight: 500;
+          font-size: 1.05rem;
+          padding: 8px 14px;
+          border-radius: vars.$radius;
+          transition: vars.$transition;
 
-            &:hover {
-                color: vars.$accent;
-                transform: scale(1.05);
-            }
+          &:hover {
+            background: var(--highlight-color);
+            color: #222;
+          }
         }
 
-        // --- Auth Links ---
-        .auth-links {
-            ul {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-                margin: 0;
-                padding: 0;
-                list-style: none; // removes bullets
+        /* theme icon same size as links */
+        .theme-toggle {
+          font-size: 1.25rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+          background: rgba(255, 255, 255, 0.1);
+          cursor: pointer;
+          transition: vars.$transition;
 
-                li {
-                    list-style: none;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: vars.$text-light;
-                    font-weight: 500;
-                    font-size: larger;
-                    transition: vars.$transition;
-                    padding: 8px 14px;
-                    border-radius: vars.$radius;
-
-                    &:hover {
-                        background-color: vars.$accent;
-                        color: white;
-                        transform: translateY(-2px);
-                    }
-                }
-            }
+          &:hover {
+            color: var(--highlight-color);
+            transform: rotate(20deg) scale(1.1);
+            background: rgba(255, 255, 255, 0.25);
+          }
         }
+      }
     }
+  }
 }
+
 
 

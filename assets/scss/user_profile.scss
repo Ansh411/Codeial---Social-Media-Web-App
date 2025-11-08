@@ -1,10 +1,95 @@
-@use "sass:color";
-@use './variables' as vars;
+// @use "sass:color";
+// @use './variables' as vars;
 
-body {
-  background: linear-gradient(120deg, #e0f3ff, #ffffff);
-  font-family: 'Poppins', sans-serif;
-}
+// body {
+//   background: linear-gradient(120deg, #e0f3ff, #ffffff);
+//   font-family: 'Poppins', sans-serif;
+// }
+
+// #user-profile-container {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   text-align: center;
+//   padding: 2rem;
+
+//   img {
+//     border-radius: 50%;
+//     width: 120px;
+//     height: 120px;
+//     object-fit: cover;
+//     border: 3px solid vars.$primary;
+//     margin-bottom: 1rem;
+//     transition: transform 0.3s ease;
+//     &:hover {
+//       transform: scale(1.05);
+//     }
+//   }
+
+//   form {
+//     display: flex;
+//     flex-direction: column;
+//     gap: 0.8rem;
+//     max-width: 320px;
+
+//     input[type='text'],
+//     input[type='email'],
+//     input[type='file'] {
+//       border: 1px solid #ccc;
+//       border-radius: vars.$radius;
+//       padding: 0.6rem;
+//       transition: border 0.3s ease;
+//       &:focus {
+//         border-color: vars.$primary;
+//         outline: none;
+//       }
+//     }
+
+//     input[type='submit'] {
+//       background: vars.$primary;
+//       color: white;
+//       font-weight: 600;
+//       cursor: pointer;
+//       border: none;
+//       border-radius: vars.$radius;
+//       padding: 0.7rem;
+//       transition: all 0.3s;
+//       &:hover {
+//         background: color.adjust(vars.$primary, $lightness : -10%);
+//       }
+//     }
+//   }
+
+//   p {
+//     font-size: 1rem;
+//     margin-top: 0.5rem;
+//     color: vars.$text-dark;
+//   }
+
+//   .friend-btn {
+//     margin-top: 1rem;
+//     padding: 0.6rem 1rem;
+//     border-radius: vars.$radius;
+//     border: none;
+//     cursor: pointer;
+//     font-weight: 600;
+//     color: white;
+//     background: vars.$primary;
+//     transition: all 0.3s;
+
+//     &:hover {
+//       background: color.adjust(vars.$primary, $lightness : -8%);
+//       transform: scale(1.05);
+//     }
+
+//     &.pending {
+//       background: gray;
+//       cursor: not-allowed;
+//     }
+//   }
+// }
+
+@use './variables' as vars;
 
 #user-profile-container {
   display: flex;
@@ -12,18 +97,19 @@ body {
   align-items: center;
   text-align: center;
   padding: 2rem;
+  background: var(--bg-color);
+  color: var(--text-color);
 
   img {
     border-radius: 50%;
     width: 120px;
     height: 120px;
     object-fit: cover;
-    border: 3px solid vars.$primary;
+    border: 3px solid var(--primary-color);
     margin-bottom: 1rem;
     transition: transform 0.3s ease;
-    &:hover {
-      transform: scale(1.05);
-    }
+
+    &:hover { transform: scale(1.05); }
   }
 
   form {
@@ -31,22 +117,21 @@ body {
     flex-direction: column;
     gap: 0.8rem;
     max-width: 320px;
+    width: 100%;
 
-    input[type='text'],
-    input[type='email'],
-    input[type='file'] {
+    input {
       border: 1px solid #ccc;
       border-radius: vars.$radius;
       padding: 0.6rem;
       transition: border 0.3s ease;
       &:focus {
-        border-color: vars.$primary;
+        border-color: var(--accent-color);
         outline: none;
       }
     }
 
     input[type='submit'] {
-      background: vars.$primary;
+      background: var(--primary-gradient);
       color: white;
       font-weight: 600;
       cursor: pointer;
@@ -54,8 +139,10 @@ body {
       border-radius: vars.$radius;
       padding: 0.7rem;
       transition: all 0.3s;
+
       &:hover {
-        background: color.adjust(vars.$primary, $lightness : -10%);
+        transform: scale(1.05);
+        box-shadow: 0 4px 10px var(--shadow-color);
       }
     }
   }
@@ -63,7 +150,6 @@ body {
   p {
     font-size: 1rem;
     margin-top: 0.5rem;
-    color: vars.$text-dark;
   }
 
   .friend-btn {
@@ -74,11 +160,10 @@ body {
     cursor: pointer;
     font-weight: 600;
     color: white;
-    background: vars.$primary;
+    background: var(--primary-gradient);
     transition: all 0.3s;
 
     &:hover {
-      background: color.adjust(vars.$primary, $lightness : -8%);
       transform: scale(1.05);
     }
 

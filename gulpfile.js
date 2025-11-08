@@ -39,7 +39,7 @@ gulp.task('js', function () {
   return gulp.src('./assets/**/*.js')   
     .pipe(terser())                     
     .pipe(rev())                        
-    .pipe(gulp.dest('./public/assets/js')) 
+    .pipe(gulp.dest('./public/assets')) 
     .pipe(rev.manifest({
       cwd: 'public',
       merge: true
@@ -64,7 +64,7 @@ gulp.task('images', function () {
       })
     ]))
     .pipe(rev())
-    .pipe(gulp.dest('./public/assets/images'))
+    .pipe(gulp.dest('./public/assets'))
     .pipe(rev.manifest({
       cwd: 'public',
       merge: true

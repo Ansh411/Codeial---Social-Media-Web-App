@@ -1,45 +1,84 @@
-@use "sass:color";
-@use 'variables' as vars;
+// @use "sass:color";
+// @use 'variables' as vars;
+
+// #layout-footer {
+//     background-color: vars.$primary;
+//     color: vars.$text-light;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//     padding: 15px 40px;
+//     border-top-left-radius: vars.$radius;
+//     border-top-right-radius: vars.$radius;
+//     box-shadow: vars.$shadow;
+//     flex-wrap: wrap;
+//     transition: vars.$transition;
+
+//     .footer-nav {
+//         ul {
+//             display: flex;
+//             gap: 20px;
+//             list-style: none;
+//             margin: 0;
+//             padding: 0;
+
+//             li a {
+//                 color: vars.$text-light;
+//                 text-decoration: none;
+//                 transition: vars.$transition;
+
+//                 &:hover {
+//                     color: vars.$accent;
+//                     text-decoration: underline;
+//                 }
+//             }
+//         }
+//     }
+
+//     p {
+//         margin: 0;
+//         font-size: 0.95rem;
+//     }
+// }
+
+
+@use './variables' as vars;
 
 #layout-footer {
-    background-color: vars.$primary;
-    color: vars.$text-light;
+  background: linear-gradient(90deg, var(--accent-color), var(--primary-color));
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  border-top-left-radius: vars.$radius;
+  border-top-right-radius: vars.$radius;
+  box-shadow: vars.$shadow;
+  transition: vars.$transition;
+
+  .footer-nav ul {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 40px;
-    border-top-left-radius: vars.$radius;
-    border-top-right-radius: vars.$radius;
-    box-shadow: vars.$shadow;
-    flex-wrap: wrap;
-    transition: vars.$transition;
+    gap: 20px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 
-    .footer-nav {
-        ul {
-            display: flex;
-            gap: 20px;
-            list-style: none;
-            margin: 0;
-            padding: 0;
+    li a {
+      color: white;
+      text-decoration: none;
+      transition: vars.$transition;
 
-            li a {
-                color: vars.$text-light;
-                text-decoration: none;
-                transition: vars.$transition;
-
-                &:hover {
-                    color: vars.$accent;
-                    text-decoration: underline;
-                }
-            }
-        }
+      &:hover {
+        color: var(--highlight-color);
+        text-decoration: underline;
+      }
     }
+  }
 
-    p {
-        margin: 0;
-        font-size: 0.95rem;
-    }
+  p {
+    margin: 0;
+    font-size: 0.95rem;
+  }
 }
-
 
 
