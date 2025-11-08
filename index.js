@@ -3,6 +3,7 @@ const env = require('./config/environment');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const app = express();
+require('./config/view-helpers')(app);
 const port = 8000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
@@ -67,7 +68,8 @@ app.use(express.urlencoded());
 
 app.use(cookieParser());
 
-app.use(express.static(env.asset_path));
+const assetPath = path.join(__dirname, env.asset_path);
+app.use(express.static(assetPath));
 
 // Make the uploads path available to the browser
 

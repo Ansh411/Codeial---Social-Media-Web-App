@@ -7,79 +7,81 @@ const terser = require('gulp-terser');
 const imagemin = require('gulp-imagemin');
 const del = require('del');
 
-// Compile SCSS → Minified CSS
+// 🧹 Clean public/assets
+gulp.task('clean:assets', function () {
+  console.log('🧹 Cleaning old assets...');
+  return del(['./public/assets']);
+});
+
+// 🧵 Compile SCSS → Minified CSS
 gulp.task('sass', function () {
-  console.log('🧵 Compiling and minifying SCSS → CSS...');
+  console.log('🧵 Compiling SCSS → CSS...');
   return gulp.src('./assets/scss/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([cssnano()]))
     .pipe(gulp.dest('./assets/css'));
 });
 
-// Revision (cache busting)
-gulp.task('revCSS', function () {
-  console.log('🔁 Adding revision hashes to CSS...');
-  return gulp.src('./assets/css/**/*.css')
-    .pipe(rev())
-    .pipe(gulp.dest('./public/assets/css'))
-    .pipe(rev.manifest({
-      cwd: 'public',
-      merge: true
-    }))
-    .pipe(gulp.dest('./public/assets'));
-});
-
-gulp.task('css', gulp.series('sass', 'revCSS'));
-
-// Minifying JS
-gulp.task('css', gulp.series('sass', 'revCSS'));
-
+// ⚡ Minify JS
 gulp.task('js', function () {
-  console.log('⚡ Minifying & revisioning JS...');
-  return gulp.src('./assets/**/*.js')   
-    .pipe(terser())                     
-    .pipe(rev())                        
-    .pipe(gulp.dest('./public/assets')) 
-    .pipe(rev.manifest({
-      cwd: 'public',
-      merge: true
-    }))
-    .pipe(gulp.dest('./public/assets')); 
+  console.log('⚡ Minifying JS...');
+  return gulp.src('./assets/js/**/*.js')
+    .pipe(terser())
+    .pipe(gulp.dest('./assets/js'));
 });
 
-// Optimizing images
+// 🖼️ Optimize images
 gulp.task('images', function () {
-  console.log('🖼️ Compressing images...');
-
+  console.log('🖼️ Optimizing images...');
   return gulp.src('./assets/**/*.{png,jpg,jpeg,gif,svg}')
     .pipe(imagemin([
       imagemin.gifsicle({ interlaced: true }),
       imagemin.mozjpeg({ quality: 75, progressive: true }),
       imagemin.optipng({ optimizationLevel: 5 }),
-      imagemin.svgo({
-        plugins: [
-          { removeViewBox: false },
-          { cleanupIDs: false }
-        ]
-      })
+      imagemin.svgo({ plugins: [{ removeViewBox: false }, { cleanupIDs: false }] })
     ]))
+    .pipe(gulp.dest('./assets/images'));
+});
+
+// 🔁 Revision all assets and create manifest with correct prefixes
+gulp.task('rev', function () {
+  console.log('🔁 Revisioning CSS, JS, and images...');
+  return gulp.src([
+    './assets/css/**/*.css',
+    './assets/js/**/*.js',
+    './assets/images/**/*.{png,jpg,jpeg,gif,svg}'
+  ], { base: './assets' })
     .pipe(rev())
     .pipe(gulp.dest('./public/assets'))
     .pipe(rev.manifest({
-      cwd: 'public',
-      merge: true
+      path: 'rev-manifest.json',
+      merge: true,
+      transformer: {
+        stringify: (manifest) => {
+          const newManifest = {};
+          for (let key in manifest) {
+            // Ensure keys include subfolder prefixes
+            if (key.startsWith('css/')) newManifest[key] = manifest[key];
+            else if (key.startsWith('js/')) newManifest[key] = manifest[key];
+            else if (key.match(/\.(png|jpg|jpeg|gif|svg)$/)) {
+              newManifest['images/' + key.split('/').pop()] = 'images/' + manifest[key].split('/').pop();
+            } else {
+              newManifest['css/' + key] = 'css/' + manifest[key];
+            }
+          }
+          return JSON.stringify(newManifest, null, 2);
+        }
+      }
     }))
     .pipe(gulp.dest('./public/assets'));
 });
 
-// Empty the public/assets directory
-gulp.task('clean:assets', function () {
-  console.log('🧹 Cleaning old assets...');
-  return del(['./public/assets']);
-});
-
-// Building overall gulp
-gulp.task('build', gulp.series('clean:assets', 'css', gulp.parallel('js', 'images'), function (done) {
+// 🏗️ Full Build Sequence
+gulp.task('build', gulp.series(
+  'clean:assets',
+  gulp.parallel('sass', 'js', 'images'),
+  'rev',
+  function (done) {
     console.log('✅ All assets built successfully!');
     done();
   }
