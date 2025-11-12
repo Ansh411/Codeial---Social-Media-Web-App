@@ -1,3 +1,5 @@
+![App Preview](/assets/images/Codeial-preview.png)
+
 # 💬 Codeial – Social Media Web Application
 
 A full-stack **social networking web app** built using modern web technologies like **Node.js**, **Express**, and **MongoDB**.
