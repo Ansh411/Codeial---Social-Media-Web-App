@@ -19,26 +19,6 @@ const MongoStore = require('connect-mongo')(session);
 const sassMiddleware = require('sass-middleware');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
-// const sass = require('sass');
-// const fs = require('fs');
-
-// console.log("✅ sass-middleware mounted from:", path.join(__dirname, 'assets', 'scss'));
-
-// const scssFolder = path.join(__dirname, 'assets', 'scss');
-// const cssFolder = path.join(__dirname, 'assets', 'css');
-
-// if (!fs.existsSync(cssFolder)) fs.mkdirSync(cssFolder, { recursive: true });
-
-// compile SCSS → CSS immediately
-// fs.readdirSync(scssFolder).forEach(file => {
-//   if (file.endsWith('.scss')) {
-//     const scssPath = path.join(scssFolder, file);
-//     const cssPath = path.join(cssFolder, file.replace('.scss', '.css'));
-//     const result = sass.compile(scssPath, { style: 'expanded' });
-//     fs.writeFileSync(cssPath, result.css);
-//     console.log(`Compiled ${file} → ${file.replace('.scss', '.css')}`);
-//   }
-// });
 
 // Setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
@@ -57,12 +37,6 @@ if(env.name == 'development'){
     })
  );
 }
-
-
-// app.use('/css', (req, res, next) => {
-//   console.log('Requesting CSS file:', req.url);
-//   next();
-// });
 
 app.use(express.urlencoded());
 

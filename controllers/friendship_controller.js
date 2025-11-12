@@ -5,13 +5,6 @@ const User = require('../models/user');
 
 module.exports.addFriend = async function(req, res){
     try{
-        // const toUser = await User.findById(req.params.id);
-        // if(!toUser){
-        //     return res.status(404).json({
-        //         message: 'User not found'
-        //     });
-        // }
-
         // check if friendship exists
         const existing = await Friendship.findOne({
             $or: [
